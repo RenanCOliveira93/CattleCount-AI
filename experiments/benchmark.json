@@ -1,0 +1,28 @@
+{
+ "maquina": {
+  "sistema": "macOS-15.8.2-arm64-arm-64bit",
+  "cpu": "arm",
+  "provider": "CPUExecutionProvider (onnxruntime)"
+ },
+ "modelo": "cattle_yolo11s_1024.onnx",
+ "tile_1024": {
+  "n": 20,
+  "mediana_ms": 74.3,
+  "p95_ms": 79.9
+ },
+ "quadro_1280x720_inteiro": {
+  "n": 10,
+  "mediana_ms": 67.7,
+  "p95_ms": 84.8
+ },
+ "foto_4000x3000_fatiada": {
+  "n": 5,
+  "mediana_ms": 1437.5,
+  "p95_ms": 1501.5
+ },
+ "bytetrack_update_30_deteccoes": {
+  "n": 300,
+  "mediana_ms": 0.5,
+  "p95_ms": 0.7
+ }
+}

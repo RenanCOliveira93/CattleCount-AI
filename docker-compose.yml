@@ -1,0 +1,44 @@
+# Portável entre Docker e Podman (imagens totalmente qualificadas; sem recursos exclusivos do Docker).
+#   docker compose up --build        |        podman compose up --build
+services:
+  db:
+    image: docker.io/library/postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-cattle}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}
+      POSTGRES_DB: ${POSTGRES_DB:-cattlecount}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  backend:
+    build: { context: ., dockerfile: infra/Dockerfile.backend }
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-cattle}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-cattlecount}
+      MODEL_ONNX: /app/models/onnx/cattle_yolo11s_1024.onnx
+      API_KEY: ${API_KEY:-}
+      DETECT_MODE: ${DETECT_MODE:-sliced}
+      DEFAULT_CONF: ${DEFAULT_CONF:-0.25}
+      MAX_UPLOAD_MB: ${MAX_UPLOAD_MB:-512}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080}
+    volumes:
+      - jobs:/data/jobs
+      - ./models:/app/models:ro
+      - ./experiments:/app/experiments:ro
+    depends_on:
+      db: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+  frontend:
+    build: { context: ., dockerfile: infra/Dockerfile.frontend }
+    ports: ["${HTTP_PORT:-8080}:80"]
+    depends_on:
+      backend: { condition: service_healthy }
+volumes:
+  pgdata:
+  jobs:

@@ -1,0 +1,258 @@
+{
+ "deteccao_e_contagem": [
+  {
+   "name": "coco_yolo11s_zeroshot",
+   "arquivo": "experiments/coco_yolo11s_zeroshot.json",
+   "pesos": "models/pretrained/yolo11s.pt",
+   "coco_zero_shot": true,
+   "conf_operacional": 0.05,
+   "regra_conf": "melhor F1 micro no VAL",
+   "voos_de_teste": null,
+   "val": {
+    "n_imagens": 41,
+    "caixas_gt": 357,
+    "map50": 0.0,
+    "map50_95": 0.0,
+    "precisao": NaN,
+    "revocacao": 0.0,
+    "contagem_mae": 8.707317073170731,
+    "contagem_rmse": 11.057499386521657,
+    "contagem_vies": -8.707317073170731,
+    "contagem_mae_ic95_por_voo": [
+     8.707317073170731,
+     8.707317073170731
+    ]
+   },
+   "test": {
+    "n_imagens": 92,
+    "caixas_gt": 809,
+    "map50": 0.03025302530253025,
+    "map50_95": 0.009869034522499867,
+    "precisao": 0.5869565217391305,
+    "revocacao": 0.03337453646477132,
+    "contagem_mae": 8.293478260869565,
+    "contagem_rmse": 12.211452215743684,
+    "contagem_vies": -8.293478260869565,
+    "contagem_mae_ic95_por_voo": [
+     5.257142857142857,
+     11.674418604651162
+    ]
+   }
+  },
+  {
+   "name": "yolo11s_cattle_adapt__jalogny_holdout",
+   "arquivo": "experiments/yolo11s_cattle_adapt__jalogny_holdout.json",
+   "pesos": "models/yolo11s_cattle_adapt_last.pt",
+   "coco_zero_shot": false,
+   "conf_operacional": 0.25,
+   "regra_conf": "fixado manualmente",
+   "voos_de_teste": [
+    "DJI_202306271323_032",
+    "DJI_202309151045_056",
+    "DJI_202309261339_059"
+   ],
+   "val": {
+    "n_imagens": 41,
+    "caixas_gt": 357,
+    "map50": 0.3681331732509949,
+    "map50_95": 0.07275464498783601,
+    "precisao": 0.6772151898734177,
+    "revocacao": 0.29971988795518206,
+    "contagem_mae": 4.902439024390244,
+    "contagem_rmse": 6.283932278283143,
+    "contagem_vies": -4.853658536585366,
+    "contagem_mae_ic95_por_voo": [
+     4.902439024390244,
+     4.902439024390244
+    ]
+   },
+   "test": {
+    "n_imagens": 57,
+    "caixas_gt": 523,
+    "map50": 0.5118895496499921,
+    "map50_95": 0.10823287019171517,
+    "precisao": 0.645021645021645,
+    "revocacao": 0.5697896749521989,
+    "contagem_mae": 1.7017543859649122,
+    "contagem_rmse": 2.3878346647045965,
+    "contagem_vies": -1.0701754385964912,
+    "contagem_mae_ic95_por_voo": [
+     1.368421052631579,
+     2.2
+    ]
+   }
+  },
+  {
+   "name": "yolo11s_cattle_es",
+   "arquivo": "experiments/yolo11s_cattle_es.json",
+   "pesos": "models/yolo11s_cattle_best.pt",
+   "coco_zero_shot": false,
+   "conf_operacional": 0.3,
+   "regra_conf": "melhor F1 micro no VAL",
+   "voos_de_teste": null,
+   "val": {
+    "n_imagens": 41,
+    "caixas_gt": 357,
+    "map50": 0.5421221300681636,
+    "map50_95": 0.11343717900071452,
+    "precisao": 0.5844155844155844,
+    "revocacao": 0.6302521008403361,
+    "contagem_mae": 2.682926829268293,
+    "contagem_rmse": 3.4641016151377544,
+    "contagem_vies": 0.6829268292682927,
+    "contagem_mae_ic95_por_voo": [
+     2.682926829268293,
+     2.682926829268293
+    ]
+   },
+   "test": {
+    "n_imagens": 92,
+    "caixas_gt": 809,
+    "map50": 0.10268410674438497,
+    "map50_95": 0.021700767422644943,
+    "precisao": 0.10811881188118812,
+    "revocacao": 0.3374536464771323,
+    "contagem_mae": 19.108695652173914,
+    "contagem_rmse": 26.3842838595746,
+    "contagem_vies": 18.652173913043477,
+    "contagem_mae_ic95_por_voo": [
+     11.80952380952381,
+     27.372093023255815
+    ]
+   }
+  },
+  {
+   "name": "yolo11s_cattle_es__jalogny_holdout",
+   "arquivo": "experiments/yolo11s_cattle_es__jalogny_holdout.json",
+   "pesos": "models/yolo11s_cattle_best.pt",
+   "coco_zero_shot": false,
+   "conf_operacional": 0.3,
+   "regra_conf": "melhor F1 micro no VAL",
+   "voos_de_teste": [
+    "DJI_202306271323_032",
+    "DJI_202309151045_056",
+    "DJI_202309261339_059"
+   ],
+   "val": {
+    "n_imagens": 41,
+    "caixas_gt": 357,
+    "map50": 0.5421221300681636,
+    "map50_95": 0.11343717900071452,
+    "precisao": 0.5844155844155844,
+    "revocacao": 0.6302521008403361,
+    "contagem_mae": 2.682926829268293,
+    "contagem_rmse": 3.4641016151377544,
+    "contagem_vies": 0.6829268292682927,
+    "contagem_mae_ic95_por_voo": [
+     2.682926829268293,
+     2.682926829268293
+    ]
+   },
+   "test": {
+    "n_imagens": 57,
+    "caixas_gt": 523,
+    "map50": 0.08861506115509284,
+    "map50_95": 0.018267552459171034,
+    "precisao": 0.10128126906650396,
+    "revocacao": 0.3173996175908222,
+    "contagem_mae": 19.859649122807017,
+    "contagem_rmse": 27.316854253661592,
+    "contagem_vies": 19.57894736842105,
+    "contagem_mae_ic95_por_voo": [
+     7.956521739130435,
+     28.533333333333335
+    ]
+   }
+  },
+  {
+   "name": "yolo11s_cattle_full",
+   "arquivo": "experiments/yolo11s_cattle_full.json",
+   "pesos": "models/yolo11s_cattle_full_best.pt",
+   "coco_zero_shot": false,
+   "conf_operacional": 0.25,
+   "regra_conf": "melhor F1 micro no VAL",
+   "voos_de_teste": [
+    "DJI_202306231103_031",
+    "DJI_202306271323_032",
+    "DJI_202309151045_056",
+    "DJI_202309261339_058",
+    "DJI_202309261339_059"
+   ],
+   "val": {
+    "n_imagens": 41,
+    "caixas_gt": 357,
+    "map50": 0.5891962668584136,
+    "map50_95": 0.12664092011290834,
+    "precisao": 0.7009345794392523,
+    "revocacao": 0.6302521008403361,
+    "contagem_mae": 1.8048780487804879,
+    "contagem_rmse": 2.7585786371899887,
+    "contagem_vies": -0.8780487804878049,
+    "contagem_mae_ic95_por_voo": [
+     1.8048780487804879,
+     1.8048780487804879
+    ]
+   },
+   "test": {
+    "n_imagens": 92,
+    "caixas_gt": 809,
+    "map50": 0.10209047388825965,
+    "map50_95": 0.020436060693836917,
+    "precisao": 0.12645011600928074,
+    "revocacao": 0.2694684796044499,
+    "contagem_mae": 11.16304347826087,
+    "contagem_rmse": 17.797471730557685,
+    "contagem_vies": 9.945652173913043,
+    "contagem_mae_ic95_por_voo": [
+     7.424242424242424,
+     15.51764705882353
+    ]
+   }
+  },
+  {
+   "name": "yolo11s_cattle_full__jalogny_holdout",
+   "arquivo": "experiments/yolo11s_cattle_full__jalogny_holdout.json",
+   "pesos": "models/yolo11s_cattle_full_best.pt",
+   "coco_zero_shot": false,
+   "conf_operacional": 0.25,
+   "regra_conf": "melhor F1 micro no VAL",
+   "voos_de_teste": [
+    "DJI_202306271323_032",
+    "DJI_202309151045_056",
+    "DJI_202309261339_059"
+   ],
+   "val": {
+    "n_imagens": 41,
+    "caixas_gt": 357,
+    "map50": 0.5891962668584136,
+    "map50_95": 0.12664092011290834,
+    "precisao": 0.7009345794392523,
+    "revocacao": 0.6302521008403361,
+    "contagem_mae": 1.8048780487804879,
+    "contagem_rmse": 2.7585786371899887,
+    "contagem_vies": -0.8780487804878049,
+    "contagem_mae_ic95_por_voo": [
+     1.8048780487804879,
+     1.8048780487804879
+    ]
+   },
+   "test": {
+    "n_imagens": 57,
+    "caixas_gt": 523,
+    "map50": 0.08360120965444066,
+    "map50_95": 0.017808976224536466,
+    "precisao": 0.1171003717472119,
+    "revocacao": 0.24091778202676864,
+    "contagem_mae": 11.140350877192983,
+    "contagem_rmse": 17.46223996403106,
+    "contagem_vies": 9.701754385964913,
+    "contagem_mae_ic95_por_voo": [
+     6.173913043478261,
+     18.133333333333333
+    ]
+   }
+  }
+ ],
+ "tracking_eval": "experiments/tracking_eval.json",
+ "benchmark": "experiments/benchmark.json"
+}

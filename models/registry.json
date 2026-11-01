@@ -1,0 +1,115 @@
+[
+ {
+  "id": "cattle_yolo11s_1024",
+  "nome": "YOLO11s ajustado em tiles ICAERUS (40 épocas)",
+  "formato": "onnx 1024×1024",
+  "arquivo": "models/onnx/cattle_yolo11s_1024.onnx",
+  "classes": [
+   "cow"
+  ],
+  "licenca": "AGPL-3.0 (pesos e código Ultralytics); dados de treino CC BY 4.0",
+  "treinado_em": "ICAERUS (Zenodo 11048412): voos de Mauron e Derval, tiles nativos 1024 px",
+  "regra_de_selecao": "melhor F1 no val (voo Mauron 028) entre dois checkpoints; conf escolhido no val",
+  "metricas": {
+   "name": "yolo11s_cattle_full",
+   "arquivo": "experiments/yolo11s_cattle_full.json",
+   "pesos": "models/yolo11s_cattle_full_best.pt",
+   "coco_zero_shot": false,
+   "conf_operacional": 0.25,
+   "regra_conf": "melhor F1 micro no VAL",
+   "voos_de_teste": [
+    "DJI_202306231103_031",
+    "DJI_202306271323_032",
+    "DJI_202309151045_056",
+    "DJI_202309261339_058",
+    "DJI_202309261339_059"
+   ],
+   "val": {
+    "n_imagens": 41,
+    "caixas_gt": 357,
+    "map50": 0.5891962668584136,
+    "map50_95": 0.12664092011290834,
+    "precisao": 0.7009345794392523,
+    "revocacao": 0.6302521008403361,
+    "contagem_mae": 1.8048780487804879,
+    "contagem_rmse": 2.7585786371899887,
+    "contagem_vies": -0.8780487804878049,
+    "contagem_mae_ic95_por_voo": [
+     1.8048780487804879,
+     1.8048780487804879
+    ]
+   },
+   "test": {
+    "n_imagens": 92,
+    "caixas_gt": 809,
+    "map50": 0.10209047388825965,
+    "map50_95": 0.020436060693836917,
+    "precisao": 0.12645011600928074,
+    "revocacao": 0.2694684796044499,
+    "contagem_mae": 11.16304347826087,
+    "contagem_rmse": 17.797471730557685,
+    "contagem_vies": 9.945652173913043,
+    "contagem_mae_ic95_por_voo": [
+     7.424242424242424,
+     15.51764705882353
+    ]
+   }
+  },
+  "limite": "Não validado fora das fazendas/drones/altitudes do ICAERUS; desempenho em fazenda inédita (Jalogny) é fraco: ver docs/pt-BR/12_resultados.md"
+ },
+ {
+  "id": "cattle_yolo11s_1024_jalogny_adapt",
+  "nome": "YOLO11s adaptado a Jalogny (2 voos) — NÃO é o padrão",
+  "formato": "onnx 1024×1024",
+  "arquivo": "models/onnx/cattle_yolo11s_1024_jalogny_adapt.onnx",
+  "classes": [
+   "cow"
+  ],
+  "licenca": "AGPL-3.0",
+  "treinado_em": "modelo de 40 épocas + tiles de 2 voos de Jalogny (031, 058), 30 épocas, lr0 0,002",
+  "metricas": {
+   "name": "yolo11s_cattle_adapt__jalogny_holdout",
+   "arquivo": "experiments/yolo11s_cattle_adapt__jalogny_holdout.json",
+   "pesos": "models/yolo11s_cattle_adapt_last.pt",
+   "coco_zero_shot": false,
+   "conf_operacional": 0.25,
+   "regra_conf": "fixado manualmente",
+   "voos_de_teste": [
+    "DJI_202306271323_032",
+    "DJI_202309151045_056",
+    "DJI_202309261339_059"
+   ],
+   "val": {
+    "n_imagens": 41,
+    "caixas_gt": 357,
+    "map50": 0.3681331732509949,
+    "map50_95": 0.07275464498783601,
+    "precisao": 0.6772151898734177,
+    "revocacao": 0.29971988795518206,
+    "contagem_mae": 4.902439024390244,
+    "contagem_rmse": 6.283932278283143,
+    "contagem_vies": -4.853658536585366,
+    "contagem_mae_ic95_por_voo": [
+     4.902439024390244,
+     4.902439024390244
+    ]
+   },
+   "test": {
+    "n_imagens": 57,
+    "caixas_gt": 523,
+    "map50": 0.5118895496499921,
+    "map50_95": 0.10823287019171517,
+    "precisao": 0.645021645021645,
+    "revocacao": 0.5697896749521989,
+    "contagem_mae": 1.7017543859649122,
+    "contagem_rmse": 2.3878346647045965,
+    "contagem_vies": -1.0701754385964912,
+    "contagem_mae_ic95_por_voo": [
+     1.368421052631579,
+     2.2
+    ]
+   }
+  },
+  "limite": "Melhora muito em Jalogny (voos retidos), mas PIORA e subconta em Mauron (esquecimento). Usar só na fazenda de adaptação."
+ }
+]

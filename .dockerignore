@@ -1,0 +1,18 @@
+# Contexto de build enxuto: dados, pesos, treino e dependências locais NÃO entram nas imagens (modelos entram por volume).
+.venv
+data
+runs
+models
+experiments
+notebooks
+docs
+tests
+training
+scripts
+sample_data
+.env
+**/__pycache__
+**/*.pyc
+.pytest_cache
+frontend/node_modules
+frontend/dist
