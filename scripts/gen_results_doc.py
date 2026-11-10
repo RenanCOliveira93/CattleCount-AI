@@ -1,4 +1,4 @@
-"""Gera docs/pt-BR/12_resultados.md a partir dos JSONs reais em experiments/. Os números NUNCA são digitados; a prosa só afirma o que os números mostram."""
+"""Gera runs/results.md (tabelas da seção 8 de docs/GUIA_TECNICO.md) a partir dos JSONs reais em experiments/. Os números NUNCA são digitados; a prosa só afirma o que os números mostram."""
 import json
 from pathlib import Path
 
@@ -13,8 +13,8 @@ f3 = lambda x: "—" if x is None or x != x else f"{x:.3f}".replace(".", ",")  #
 fx = lambda x, d=1: f"{x:.{d}f}".replace(".", ",")  # noqa: E731
 o = []
 w = o.append
-w("# 12 · Resultados (gerado automaticamente de `experiments/*.json`)\n")
-w("> Este arquivo é produzido por `scripts/gen_results_doc.py`. Nenhum número foi digitado à mão. Interpretação e limites: ver o fim do capítulo.\n")
+w("# Resultados (gerado automaticamente de `experiments/*.json`)\n")
+w("> Este arquivo é produzido por `scripts/gen_results_doc.py`. Nenhum número foi digitado à mão. Interpretação e limites: ver o fim do documento.\n")
 t, v = full["test"], full["val"]
 w("## 1 · Em uma frase\n")
 w(f"- **Na fazenda de validação (Mauron, voo não usado no treino)** o modelo escolhido conta razoavelmente: MAE {f2(v['contagem']['mae'])} animais/imagem, mAP50 {f3(v['map50'])}.")
@@ -27,7 +27,7 @@ for nm, e in (("COCO zero-shot (yolo11s)", coco), ("YOLO11s, parada antecipada (
     for sp in ("val", "test"):
         x = e[sp]; ci = x["contagem_ic95_bootstrap_por_voo"]["mae"]; icn = x["contagem_ic95_bootstrap_por_voo"]["n_unidades"]
         w(f"| {nm} | {e['conf_operacional']} | {sp} | {f3(x['map50'])} | {f3(x['map50_95'])} | {f3(x['prf']['precision'])} | {f3(x['prf']['recall'])} | {f2(x['contagem']['mae'])} | {x['contagem']['bias']:+.2f} | {('[%s; %s]' % (fx(ci[0]), fx(ci[1]))) if icn > 1 else '— (1 voo)'} |")
-w("\n**Seleção do modelo:** regra aplicada: melhor F1 no val. **Transparência:** o primeiro modelo (parada antecipada) já tinha sido avaliado no teste quando decidi treinar as 40 épocas completas; a decisão de treinar mais não foi cega ao teste, mas a escolha entre os dois modelos usou só o val. " + f"F1 no val: 40 épocas {f3(max(full['f1_val_por_conf'].values()))} contra parada antecipada {f3(max(es['f1_val_por_conf'].values()))}. O val também escolheu o checkpoint dentro de cada treino (métrica interna do Ultralytics), então os números do val são **um pouco otimistas**.\n")
+w("\n**Seleção do modelo:** regra aplicada: melhor F1 no val. **Transparência:** o primeiro modelo (parada antecipada) já tinha sido avaliado no teste quando se decidiu treinar as 40 épocas completas; a decisão de treinar mais não foi cega ao teste, mas a escolha entre os dois modelos usou só o val. " + f"F1 no val: 40 épocas {f3(max(full['f1_val_por_conf'].values()))} contra parada antecipada {f3(max(es['f1_val_por_conf'].values()))}. O val também escolheu o checkpoint dentro de cada treino (métrica interna do Ultralytics), então os números do val são **um pouco otimistas**.\n")
 w("## 3 · Onde o modelo selecionado erra no teste (fazenda inédita)\n")
 w("| estrato | imagens | GT | previsto | MAE | viés |\n|---|---|---|---|---|---|")
 for k, nm in (("por_voo", "voo"), ("por_altitude_m", "altitude (m)"), ("por_densidade", "densidade (animais/imagem)")):
@@ -96,5 +96,7 @@ for s in ("O teste tem **5 voos de uma única fazenda**: o IC por voo é largo e
           "Anotações do ICAERUS têm lacunas conhecidas; voos inconsistentes foram excluídos, mas ainda pode haver animais sem caixa nos voos usados (isso **subestima** a precisão).",
           "Um único modelo/tamanho (YOLO11s) e uma semente: sem variância entre execuções."):
     w(f"- {s}")
-(ROOT / "docs/pt-BR/12_resultados.md").write_text("\n".join(o) + "\n")
+out = ROOT / "runs/results.md"
+out.parent.mkdir(exist_ok=True)
+out.write_text("\n".join(o) + "\n")
 print("ok", len(o), "linhas")

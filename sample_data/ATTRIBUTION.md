@@ -6,4 +6,4 @@
 | `demo_pan_synthetic.mp4` | Vídeo **SINTÉTICO**: uma janela 1280×720 desliza sobre a foto real em resolução nativa. Os animais são estáticos; só a câmera "se move". O quadro traz o aviso "SINTETICO". | Derivado da mesma foto (CC BY 4.0). Não é vídeo aéreo real. |
 | `demo_pan_synthetic_gt.txt` | Verdade exata de trilhas do vídeo acima (formato MOT: frame,id,x,y,w,h,…), derivada das caixas anotadas do dataset | Idem |
 
-Citação do dataset: ver `docs/pt-BR/02_dados.md`.
+Citação do dataset: ver `docs/GUIA_TECNICO.md (seção 4)`.

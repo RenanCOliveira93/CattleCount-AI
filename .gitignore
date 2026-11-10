@@ -11,3 +11,10 @@ __pycache__/
 .pytest_cache/
 frontend/node_modules/
 frontend/dist/
+.DS_Store
+*.log
+.venv*/
+venv/
+.env.*
+!.env.example
+notebooks/.ipynb_checkpoints/

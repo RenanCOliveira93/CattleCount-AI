@@ -55,7 +55,7 @@
     ]
    }
   },
-  "limite": "Não validado fora das fazendas/drones/altitudes do ICAERUS; desempenho em fazenda inédita (Jalogny) é fraco: ver docs/pt-BR/12_resultados.md"
+  "limite": "Não validado fora das fazendas/drones/altitudes do ICAERUS; desempenho em fazenda inédita (Jalogny) é fraco: ver docs/GUIA_TECNICO.md (seção 8)"
  },
  {
   "id": "cattle_yolo11s_1024_jalogny_adapt",

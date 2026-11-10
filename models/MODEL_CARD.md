@@ -5,7 +5,7 @@
 - **Seleção**: melhor F1 no val (voo Mauron 028) entre dois checkpoints; limiar de confiança 0,25 escolhido no val.
 - **Uso pretendido**: contar animais **visíveis** em fotos aéreas nadir de pastagem a ~60–100 m, com resolução de ~46 px por animal; apoio a inspeção manual.
 - **Fora do escopo**: censo de rebanho; outras altitudes/ângulos; terreno com mata densa; decisões sanitárias, comerciais ou regulatórias.
-- **Desempenho medido** (ver `docs/pt-BR/12_resultados.md`, `experiments/registry.json`): val (Mauron) mAP50 0,589, MAE 1,80; **teste em fazenda inédita (Jalogny) mAP50 0,102, precisão 0,126, superestima em +113 %**. Falsos positivos em mata (galhos secos) foram observados.
+- **Desempenho medido** (ver `docs/GUIA_TECNICO.md (seção 8)`, `experiments/registry.json`): val (Mauron) mAP50 0,589, MAE 1,80; **teste em fazenda inédita (Jalogny) mAP50 0,102, precisão 0,126, superestima em +113 %**. Falsos positivos em mata (galhos secos) foram observados.
 - **Limitações**: animais escuros/ocultos perdidos; subconjunto de 199 imagens; teste de uma fazenda; sem avaliação por iluminação ou oclusão.
 - **Licença**: **AGPL‑3.0** (pesos/código Ultralytics). Os arquivos `.pt`/`.onnx` não são versionados; reproduza com `training/` ou obtenha com o autor.
 - **Reprodução**: `training/build_tiles.py` → `training/train_yolo.py yolo11s yolo11s_cattle_full 40 100` → `training/predict_split.py` → `training/eval_predictions.py`.

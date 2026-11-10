@@ -26,7 +26,7 @@ best = next((r for r in det if r["name"] == "yolo11s_cattle_full"), None)
 models = [{"id": "cattle_yolo11s_1024", "nome": "YOLO11s ajustado em tiles ICAERUS (40 épocas)", "formato": "onnx 1024×1024", "arquivo": "models/onnx/cattle_yolo11s_1024.onnx",
            "classes": ["cow"], "licenca": "AGPL-3.0 (pesos e código Ultralytics); dados de treino CC BY 4.0",
            "treinado_em": "ICAERUS (Zenodo 11048412): voos de Mauron e Derval, tiles nativos 1024 px", "regra_de_selecao": "melhor F1 no val (voo Mauron 028) entre dois checkpoints; conf escolhido no val",
-           "metricas": best, "limite": "Não validado fora das fazendas/drones/altitudes do ICAERUS; desempenho em fazenda inédita (Jalogny) é fraco: ver docs/pt-BR/12_resultados.md"}]
+           "metricas": best, "limite": "Não validado fora das fazendas/drones/altitudes do ICAERUS; desempenho em fazenda inédita (Jalogny) é fraco: ver docs/GUIA_TECNICO.md (seção 8)"}]
 ad = next((r for r in det if r["name"] == "yolo11s_cattle_adapt__jalogny_holdout"), None)
 if ad:
     models.append({"id": "cattle_yolo11s_1024_jalogny_adapt", "nome": "YOLO11s adaptado a Jalogny (2 voos) — NÃO é o padrão", "formato": "onnx 1024×1024", "arquivo": "models/onnx/cattle_yolo11s_1024_jalogny_adapt.onnx",
